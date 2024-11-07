@@ -66,7 +66,7 @@
     <Select items={menuItems}
         bind:value
         change={updateData}
-        placeholder="Pick a city..."
+        placeholder="Pick a category..."
 		showChevron="true"
 		listOpen={false}
     />
