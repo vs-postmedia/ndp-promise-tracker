@@ -14,7 +14,7 @@
     const dataUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQFo5pVsIFo3uzc017mwdqjalrgYTANsPLEKyiqqvD7s07xJQazhJ3ooAQyFUDQwDMiXQCPdujR9C6l/pub?gid=111238127&single=true&output=csv';
 
     // VARIABLES
-    let data, value;
+    let data, filteredData, value;
     const defaultSelectValue = menuItems[0].value;
 
     // REACTIVE VARIABLES
@@ -37,15 +37,21 @@
     }
 
     function updateData(value) {
-        if (!value || !value.value) return;
+        if (!value || !value.value || value.value === 'all') return;
 
-        console.log(value);
+        console.log(value.value);
+        console.log(data[0].category);
+
+        filteredData = data.filter(d => d.category === value.value);
+
+        console.log(data)
     }
 
     async function init() {
         // fetch remote data
         data = await fetchData(dataUrl);
-        console.log(data);
+        filteredData = data;
+        // console.log(data);
 
         const toplineData = await processToplineData(data);
         console.log(toplineData)
@@ -103,8 +109,7 @@
         value={value}
     />
     <Cards 
-        data={data}
-        category={value}
+        data={filteredData}
     />
 </main>
 

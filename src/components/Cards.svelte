@@ -38,7 +38,7 @@
 
 <ul class="cards-container" bind:clientWidth={width}>
     {#each data as d}
-        <li class="card {d.category} {d.status ? d.status.toLowerCase() : ''}">
+        <li class="card {d.category} {d.category} {d.status ? d.status.toLowerCase() : ''}">
             <div class="color-bar {d.status}"></div>
             <h2>{d.title}</h2>
         </li>
