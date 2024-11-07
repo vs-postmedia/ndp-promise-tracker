@@ -10,7 +10,7 @@
     // DATA
     // import data from "$data/data.js";
     import { menuItems } from "$data/menu-items";
-    const dataUrl = 'https://raw.githubusercontent.com/ajstarks/dubois-data-portraits/master/challenge/2024/challenge03/data.csv';
+    const dataUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQFo5pVsIFo3uzc017mwdqjalrgYTANsPLEKyiqqvD7s07xJQazhJ3ooAQyFUDQwDMiXQCPdujR9C6l/pub?gid=111238127&single=true&output=csv';
 
     // VARIABLES
     let data, value;
@@ -35,7 +35,7 @@
     async function init() {
         // fetch remote data
         data = await fetchData(dataUrl);
-        // console.log(data);
+        console.log(data);
 
         // default display selector value
 		value = defaultSelectValue;
