@@ -5,8 +5,6 @@
     // LIBS
     import { onMount } from 'svelte';
 
-    // COMPONENTS
-    import Tooltip from '$components/Tooltip.svelte';
 
     // VARS
     let tooltipData;
@@ -19,11 +17,11 @@
 		bottom: 20,
 		left: 20 
 	};
-    $: console.log(data);
+    // $: console.log(data);
 
     // FUNCTIONS
     function init() {
-        console.log('CHART INIT!')
+        console.log('CARDS INIT!')
     }
     function addCommasToNumber(number) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

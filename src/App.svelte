@@ -2,13 +2,14 @@
     // COMPONENTS
     import { onMount } from 'svelte';
     import { csvParse } from 'd3-dsv';
-    import Chart from "$components/Chart.svelte";
+    import Cards from "$components/Cards.svelte";
+    import Topline from "$components/Topline.svelte";
+    import { tidy, count, groupBy, summarize } from '@tidyjs/tidy';
     import Select from "svelte-select"; // https://github.com/rob-balfre/svelte-select
 
     
 
     // DATA
-    // import data from "$data/data.js";
     import { menuItems } from "$data/menu-items";
     const dataUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQFo5pVsIFo3uzc017mwdqjalrgYTANsPLEKyiqqvD7s07xJQazhJ3ooAQyFUDQwDMiXQCPdujR9C6l/pub?gid=111238127&single=true&output=csv';
 
@@ -25,6 +26,15 @@
         return csvParse(data);
     }
 
+    async function processToplineData(data) {
+        return tidy(
+            data,
+            groupBy(['status']),
+            summarize({
+                total: count('status')
+            })
+        )
+    }
 
     function updateData(value) {
         if (!value || !value.value) return;
@@ -36,6 +46,9 @@
         // fetch remote data
         data = await fetchData(dataUrl);
         console.log(data);
+
+        const toplineData = await processToplineData(data);
+        console.log(toplineData)
 
         // default display selector value
 		value = defaultSelectValue;
@@ -58,9 +71,13 @@
 		listOpen={false}
     />
     
-    <Chart 
+    <Topline 
         data={data}
         value={value}
+    />
+    <Cards 
+        data={data}
+        category={value}
     />
 </main>
 

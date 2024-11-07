@@ -21,6 +21,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@tidyjs/tidy": "^2.5.2",
 		"d3-dsv": "^3.0.1",
 		"svelte-select": "^5.7.0"
 	}
