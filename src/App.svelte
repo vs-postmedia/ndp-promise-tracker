@@ -58,7 +58,7 @@
 </script>
 
 <header>
-    <h1>VS SvelteKit Template</h1>
+    <h1>Tracking NDP election promises</h1>
     <p class="subhead">Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 </header>
 
@@ -70,6 +70,33 @@
 		showChevron="true"
 		listOpen={false}
     />
+
+    <p id="legend-title">Status: </p>
+    <ul id="legend">
+        <!-- <li>
+            <p class="bold">Status: </p>
+        </li> -->
+        <li>
+            <div class="swatch unrated"></div>
+            <p>Unrated</p>
+        </li>
+        <li>
+            <div class="swatch unmet"></div>
+            <p>Unmet</p>
+        </li>
+        <li>
+            <div class="swatch in-progress"></div>
+            <p>In progress</p>
+        </li>
+        <li>
+            <div class="swatch partially-met"></div>
+            <p>Partially met</p>
+        </li>
+        <li>
+            <div class="swatch complete"></div>
+            <p>Complete</p>
+        </li>
+    </ul>
     
     <Topline 
         data={data}
@@ -96,6 +123,7 @@
 		margin-bottom: 2rem;
 	}
 	header > h1 {
+        line-height: 1.3;
 		text-align: center;
 	}
 	header .subhead {
@@ -103,6 +131,43 @@
 		max-width: 525px;
 		text-align: center;
 	}
+
+    /* LEGEND */
+    #legend-title {
+        font-family: 'BentonSansCond-Bold';
+        font-weight: 800;
+        margin: 25px 0 5px 0;
+    }
+    #legend {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 0 2rem 0;
+    }
+
+    #legend li {
+        display: flex;
+        margin: 5px 0;
+    }
+    #legend .swatch {
+        background-color: lightgrey;
+        border-radius: 3px;
+        height: 15px;
+        margin: 2px 5px 0 10px;
+        width: 15px;
+    }
+    #legend .swatch.unmet {
+        background-color: var(--red02);
+    }
+    #legend .swatch.complete {
+        background-color: var(--green02);
+    }
+    #legend .swatch.partially-met {
+        background-color: var(--yellow02);
+    }
+    #legend .swatch.in-progress {
+        background-color: var(--orange02);
+    }
+
 
     /* COMBOBOX SELECTOR */
   	:global(.svelte-select) {

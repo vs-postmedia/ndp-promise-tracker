@@ -34,7 +34,7 @@
 </script>
 
 
-<pre>CHART: Combobox value = {JSON.stringify(value) || 'No selection'}</pre>
+<!-- <pre>CHART: Combobox value = {JSON.stringify(value) || 'No selection'}</pre> -->
 
 <ul class="cards-container" bind:clientWidth={width}>
     {#each data as d}
@@ -53,7 +53,8 @@
     }
     .card {
         display: flex;
-        margin: 0.25rem;
+        margin: 0.5rem 0.25rem;
+        cursor: pointer;
         width: 100%;
     }
 
@@ -65,7 +66,7 @@
     .card .color-bar {
         background-color: lightgrey;
         border-radius: 3px;
-        margin-right: 5px;
+        margin-right: 10px;
         width: 10px;
     }
     .card .color-bar.unmet {
@@ -84,6 +85,10 @@
     @media (min-width: 500px) {
         .card {
             width: 200px;
+        }
+        .card .color-bar {
+            margin-right: 15px;
+            width: 20px;
         }
     }
 </style>

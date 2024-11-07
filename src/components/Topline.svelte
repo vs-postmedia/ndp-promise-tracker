@@ -31,8 +31,8 @@
     onMount(init);
 </script>
 
-<pre>{`CHART: Resolved data = ${JSON.stringify(data)}`}</pre>
-<pre>CHART: Combobox value = {value || 'No selection'}</pre>
+<!-- <pre>{`CHART: Resolved data = ${JSON.stringify(data)}`}</pre>
+<pre>CHART: Combobox value = {value || 'No selection'}</pre> -->
 
 <div class="chart-container" bind:clientWidth={width}>
 
