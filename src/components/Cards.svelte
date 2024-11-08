@@ -5,9 +5,6 @@
     // LIBS
     import { onMount } from 'svelte';
 
-    // COMPONENTS
-    import Tooltip from '$components/Tooltip.svelte';
-
     // VARS
     let tooltipData;
     let width = 500;
@@ -39,8 +36,12 @@
 <ul class="cards-container" bind:clientWidth={width}>
     {#each data as d}
         <li class="card {d.category} {d.category} {d.status ? d.status.toLowerCase() : ''}">
-            <div class="color-bar {d.status}"></div>
-            <h2>{d.title}</h2>
+            <div class="card-title">
+                <div class="color-bar {d.status}"></div>
+                <h2>{d.title}</h2>
+            </div>
+            <p>{d.description}</p>
+            <p class="notes">{d.notes}</p>
         </li>
     {/each}
 </ul>
@@ -52,19 +53,29 @@
         justify-content: space-between;
     }
     .card {
-        display: flex;
         margin: 0.5rem 0.25rem;
         cursor: pointer;
         width: 100%;
     }
-
+    .card .card-title {
+        display: flex;
+    }
     .card h2 {
         font-size: 1.25rem;
         line-height: 1.3;
+
+    }
+    .card p {
+        margin-top: 10px;
+    }
+
+    .card .notes {
+        color: var(--grey03);
+        font-family: 'BentonSansCond-RegItalic', italic;
     }
 
     .card .color-bar {
-        background-color: lightgrey;
+        background-color: var(--grey04);
         border-radius: 3px;
         margin-right: 10px;
         width: 10px;
@@ -82,9 +93,9 @@
         background-color: var(--orange02);
     }
 
-    @media (min-width: 500px) {
+    @media (min-width: 550px) {
         .card {
-            width: 200px;
+            width: 48%;
         }
         .card .color-bar {
             margin-right: 15px;

@@ -37,21 +37,20 @@
     }
 
     function updateData(value) {
-        if (!value || !value.value || value.value === 'all') return;
+        if (!value || !value.value) return;
 
-        console.log(value.value);
-        console.log(data[0].category);
-
-        filteredData = data.filter(d => d.category === value.value);
-
-        console.log(data)
+        if (value.value === 'all') {
+            filteredData = data;
+        } else {
+            // filter based on dropdown settings
+            filteredData = data.filter(d => d.category === value.value);
+        }
     }
 
     async function init() {
         // fetch remote data
         data = await fetchData(dataUrl);
         filteredData = data;
-        // console.log(data);
 
         const toplineData = await processToplineData(data);
         console.log(toplineData)
@@ -77,11 +76,8 @@
 		listOpen={false}
     />
 
-    <p id="legend-title">Status: </p>
+    <p id="legend-title">Status <span class="no-bold">(click to filter by category)</span>: </p>
     <ul id="legend">
-        <!-- <li>
-            <p class="bold">Status: </p>
-        </li> -->
         <li>
             <div class="swatch unrated"></div>
             <p>Unrated</p>
@@ -115,7 +111,7 @@
 
 <footer>
     <p class="note">NOTE: tk.</p>
-    <p class="source">Source:  <a href="https:vancouversun.com" target="_blank">TK</a></p>
+    <p class="source">Source:  <a href="https://www.bcndp.ca/actionplan" target="_blank">B.C. NDP</a>, Postmedia analysis</p>
 </footer>
   
 <style>
@@ -143,6 +139,10 @@
         font-weight: 800;
         margin: 25px 0 5px 0;
     }
+    #legend-title .no-bold {
+        font-family: 'BentonSansCond-Regular';
+        font-weight: 400;
+    }
     #legend {
         display: flex;
         flex-wrap: wrap;
@@ -154,7 +154,7 @@
         margin: 5px 0;
     }
     #legend .swatch {
-        background-color: lightgrey;
+        background-color: var(--grey04);
         border-radius: 3px;
         height: 15px;
         margin: 2px 5px 0 10px;
