@@ -16,18 +16,6 @@
 		bottom: 20,
 		left: 20 
 	};
-    // $: console.log(data);
-
-    // FUNCTIONS
-    function init() {
-        console.log('TOPLINE INIT!')
-    }
-    function addCommasToNumber(number) {
-        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-
-    // LIGHTS! CAMERA! ACTION!
-    onMount(init);
 </script>
 
 
