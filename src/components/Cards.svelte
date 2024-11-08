@@ -2,9 +2,6 @@
     export let data = [];
     export let value = '';
 
-    // LIBS
-    import { onMount } from 'svelte';
-
     // VARS
     let tooltipData;
     let width = 500;
@@ -17,9 +14,6 @@
 		left: 20 
 	};
 </script>
-
-
-<!-- <pre>CHART: Combobox value = {JSON.stringify(value) || 'No selection'}</pre> -->
 
 <ul class="cards-container" bind:clientWidth={width}>
     {#each data as d}
