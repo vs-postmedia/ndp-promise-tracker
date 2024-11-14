@@ -3,6 +3,7 @@
     import { onMount } from 'svelte';
     import { csvParse } from 'd3-dsv';
     import Cards from "$components/Cards.svelte";
+    import Legend from "$components/Legend.svelte";
     import Topline from "$components/Topline.svelte";
     import { tidy, count, groupBy, summarize } from '@tidyjs/tidy';
     import Select from "svelte-select"; // https://github.com/rob-balfre/svelte-select
@@ -76,29 +77,7 @@
 		listOpen={false}
     />
 
-    <p id="legend-title">Status <span class="no-bold">(click to filter by category)</span>: </p>
-    <ul id="legend">
-        <li>
-            <div class="swatch unrated"></div>
-            <p>Unrated</p>
-        </li>
-        <li>
-            <div class="swatch unmet"></div>
-            <p>Unmet</p>
-        </li>
-        <li>
-            <div class="swatch in-progress"></div>
-            <p>In progress</p>
-        </li>
-        <li>
-            <div class="swatch partially-met"></div>
-            <p>Partially met</p>
-        </li>
-        <li>
-            <div class="swatch complete"></div>
-            <p>Complete</p>
-        </li>
-    </ul>
+    <Legend />
     
     <Topline 
         data={data}
@@ -132,47 +111,6 @@
 		max-width: 525px;
 		text-align: center;
 	}
-
-    /* LEGEND */
-    #legend-title {
-        font-family: 'BentonSansCond-Bold';
-        font-weight: 800;
-        margin: 25px 0 5px 0;
-    }
-    #legend-title .no-bold {
-        font-family: 'BentonSansCond-Regular';
-        font-weight: 400;
-    }
-    #legend {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 0 2rem 0;
-    }
-
-    #legend li {
-        display: flex;
-        margin: 5px 0;
-    }
-    #legend .swatch {
-        background-color: var(--grey04);
-        border-radius: 3px;
-        height: 15px;
-        margin: 2px 5px 0 10px;
-        width: 15px;
-    }
-    #legend .swatch.unmet {
-        background-color: var(--red02);
-    }
-    #legend .swatch.complete {
-        background-color: var(--green02);
-    }
-    #legend .swatch.partially-met {
-        background-color: var(--yellow02);
-    }
-    #legend .swatch.in-progress {
-        background-color: var(--orange02);
-    }
-
 
     /* COMBOBOX SELECTOR */
   	:global(.svelte-select) {

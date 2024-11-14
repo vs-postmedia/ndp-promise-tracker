@@ -23,7 +23,7 @@
                 <h2>{d.title}</h2>
             </div>
             <p>{d.description}</p>
-            <p class="notes">{d.notes}</p>
+            <p class="notes">{d.notes_public}</p>
         </li>
     {/each}
 </ul>
@@ -35,8 +35,12 @@
         justify-content: space-between;
     }
     .card {
-        margin: 0.5rem 0.25rem;
+        border: 1px solid var(--grey04);
+        border-radius: 5px;
+        box-shadow: 3px 2px 7px var(--grey05);
         cursor: pointer;
+        margin: 0.5rem 0.25rem;
+        padding: 5px;
         width: 100%;
     }
     .card .card-title {
@@ -51,7 +55,7 @@
         margin-top: 10px;
     }
 
-    .card .notes {
+    #app .card .notes {
         color: var(--grey03);
         font-family: 'BentonSansCond-RegItalic', italic;
     }
@@ -60,7 +64,8 @@
         background-color: var(--grey04);
         border-radius: 3px;
         margin-right: 10px;
-        width: 10px;
+        max-width: 10px;
+        min-width: 10px;
     }
     .card .color-bar.unmet {
         background-color: var(--red02);
@@ -75,13 +80,9 @@
         background-color: var(--orange02);
     }
 
-    @media (min-width: 550px) {
+    @media (min-width: 615px) {
         .card {
-            width: 48%;
-        }
-        .card .color-bar {
-            margin-right: 15px;
-            width: 20px;
+            width: 45%;
         }
     }
 </style>
