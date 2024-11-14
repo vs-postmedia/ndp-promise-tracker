@@ -43,6 +43,9 @@
         padding: 5px;
         width: 100%;
     }
+    .card.hidden {
+        display: none;
+    }
     .card .card-title {
         display: flex;
     }
