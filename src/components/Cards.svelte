@@ -22,7 +22,7 @@
                 <div class="color-bar {d.status}"></div>
                 <h2>{d.title}</h2>
             </div>
-            <p>{d.description}</p>
+            <p><span class="highlight">NDP claim:</span> {d.description}</p>
             <p class="notes">{d.notes_public}</p>
         </li>
     {/each}
@@ -56,6 +56,11 @@
     }
     .card p {
         margin-top: 10px;
+    }
+
+    .card p .highlight {
+        font-family: 'BentonSansCond-Bold', sans-serif;
+        font-weight: 800;
     }
 
     #app .card .notes {
