@@ -40,6 +40,10 @@
     function updateData(value) {
         if (!value || !value.value) return;
 
+        // get legend element list
+        const legendEls = document.querySelectorAll('#legend > li');
+        legendEls.forEach(li => li.classList.remove('hidden'));
+
         if (value.value === 'all') {
             filteredData = data;
         } else {

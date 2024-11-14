@@ -3,27 +3,34 @@
 
     function init() {
         // assign click event handler to legend items
-        const liEls = document.querySelectorAll('#legend > li');
-        liEls.forEach(li => li.addEventListener('click', legendClickEvent));
+        const legendEls = document.querySelectorAll('#legend > li');
+        legendEls.forEach(li => li.addEventListener('click', legendClickEvent));
     }
 
     function legendClickEvent(e) {
         // console.log(e.currentTarget.className)
         const status = e.currentTarget.className.split(' ')[0];
-        console.log(status)
 
-        // filter cards by currentClass
+        // get list of cards & legend elements
         const cards = document.querySelectorAll('.card');
+        const legendEls = document.querySelectorAll('#legend > li');
 
         // destructure cards (a NodeList) into an array & filter by current status
         const visibleCards = [...cards].filter(card => !card.className.includes(status));
+        const visibleLegend = [...legendEls].filter(li => !li.className.includes(status));
+        
+        console.log(visibleCards)
+        console.log(visibleLegend)
 
-        // remove hidden class from any card it's been applied to
+        // remove hidden class from any card/legend element it's been applied to
         cards.forEach(card => card.classList.remove('hidden'));
+        legendEls.forEach(li => li.classList.remove('hidden'));
 
+        // clicking all restores everything
         if (status !== 'all') {
-            // add  hidden class to currently selected status
+            // add hidden class to currently selected status
             visibleCards.forEach(card => card.classList.add('hidden'));
+            visibleLegend.forEach(li => li.classList.add('hidden'));
         }
     }
 
@@ -59,6 +66,7 @@
         <div class="swatch complete"></div>
         <p>Complete</p>
     </li>
+    <li class="hidden"></li>
 </ul>
 
 <style>
@@ -82,6 +90,9 @@
         cursor: pointer;
         display: flex;
         margin: 5px 0;
+    }
+    #legend li.hidden {
+        opacity: 0.5;
     }
     #legend .swatch {
         background-color: var(--grey04);
